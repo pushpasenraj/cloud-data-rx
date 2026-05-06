@@ -2,7 +2,6 @@
 
 A simple marketing-style website for **Cloud Data RX**, built with **Next.js**. It showcases cloud backup, recovery, storage, and related services with a responsive layout.
 
----
 
 ## Project description
 
@@ -13,8 +12,6 @@ Cloud Data RX is a beginner-friendly Next.js project that presents a small busin
 - A shared **navigation bar** and **footer** on every page  
 - A **contact form** that validates in the browser (demo only — no server saves emails yet)
 
----
-
 ## Features
 
 - **Responsive design** — Works on phones, tablets, and desktops  
@@ -24,7 +21,6 @@ Cloud Data RX is a beginner-friendly Next.js project that presents a small busin
 - **About page** — Sections for who we are, mission, and why Cloud Data RX  
 - **Contact form** — Controlled inputs, validation, success alert, and reset after submit (demo)
 
----
 
 ## Tech stack
 
@@ -38,11 +34,9 @@ Cloud Data RX is a beginner-friendly Next.js project that presents a small busin
 
 Versions depend on your `package.json` (example: Next.js 16.x, React 19.x).
 
----
 
 ## Folder structure (simple overview)
 
-```
 cloud-data-rx/
 ├── app/
 │   ├── about/
@@ -71,7 +65,6 @@ cloud-data-rx/
 
 **Tip:** In Next.js App Router, each folder under `app/` with a `page.tsx` file becomes a **route**.
 
----
 
 ## How to run the project
 
@@ -79,27 +72,20 @@ cloud-data-rx/
 
 From the project folder:
 
-```bash
 npm install
-```
 
 ### 2. Start the dev server
 
-```bash
 npm run dev
-```
 
 Open **[http://localhost:3000](http://localhost:3000)** in your browser.
 
 ### 3. Other useful commands
 
-```bash
 npm run build   # Create a production build
 npm run start   # Run the production server (after build)
 npm run lint    # Run ESLint
-```
 
----
 
 ## Pages included
 
@@ -112,7 +98,6 @@ npm run lint    # Run ESLint
 
 Navigation links and footer links match these routes.
 
----
 
 ## Future improvements
 
@@ -126,9 +111,24 @@ Ideas you can add as you learn more:
 - **Analytics** — Privacy-friendly visitor stats  
 - **Deploy** — Host on [Vercel](https://vercel.com) or another platform  
 
----
 
 ## Learn more
 
 - [Next.js Documentation](https://nextjs.org/docs)  
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)  
+
+## 📸 Screenshots
+
+### Home Page
+![Home](./public/screenshots/home.png)
+
+### About Page
+![About](./public/screenshots/about.png)
+
+### Services Page
+![Services](./public/screenshots/services.png)
+
+### Contact Page
+![Contact](./public/screenshots/contact.png)
+
+
