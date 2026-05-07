@@ -1,118 +1,177 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Services",
+  description:
+    "Cloud Data RX services include data analytics, AI automation, business intelligence, cloud data solutions, dashboards, data engineering, Snowflake, and lead intelligence.",
+};
 
 const services = [
   {
-    title: "Cloud Data Backup",
+    title: "Data Analytics",
     description:
-      "Scheduled, encrypted backups with clear retention rules — so you always know what’s protected and for how long.",
+      "KPI frameworks, exploratory analysis, and reporting that aligns teams around consistent definitions—not conflicting spreadsheet versions.",
   },
   {
-    title: "Data Recovery",
+    title: "AI Automation",
     description:
-      "Structured restore paths and tested recovery steps to get critical systems online quickly after outages or mistakes.",
+      "Practical automation for classification, enrichment, routing, and monitoring so analysts reclaim time without sacrificing explainability.",
   },
   {
-    title: "Secure Cloud Storage",
+    title: "Business Intelligence",
     description:
-      "Hardened storage workflows with access controls and encryption designed to reduce exposure across teams and devices.",
+      "Governed metrics, curated datasets, and BI layers purpose-built so leaders get one credible story—not ten competing dashboards.",
   },
   {
-    title: "Data Migration",
+    title: "Cloud Data Solutions",
     description:
-      "Planned migrations between clouds or on‑prem environments with checkpoints, validation, and rollback thinking built in.",
+      "Modern ingestion, storage, and access patterns across the cloud—with observability and cost-conscious design as first-class concerns.",
   },
   {
-    title: "Analytics Dashboard",
+    title: "Dashboard Development",
     description:
-      "Usage and health visibility in one place — trends, alerts, and summaries your stakeholders can actually understand.",
+      "Purpose-built dashboards for executives and operators, optimized for clarity, speed, and long-term maintainability.",
   },
   {
-    title: "Database Monitoring",
+    title: "Data Engineering",
     description:
-      "Performance signals, availability checks, and early warnings so database issues are caught before users feel them.",
+      "Reliable pipelines, modeling discipline, validation, and handoffs—so downstream analytics and BI rest on dependable foundations.",
+  },
+  {
+    title: "Snowflake Solutions",
+    description:
+      "Snowflake-aligned architecture, workloads, performance tuning, governance patterns, and collaboration models your team can sustain.",
+  },
+  {
+    title: "Lead Intelligence",
+    badge: "Supporting",
+    description:
+      "Firmer targeting context—account lists, firmographics, and signal-oriented views that plug into broader analytics programs when GTM teams need sharper lists.",
   },
 ] as const;
 
 export default function ServicesPage() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(34,211,238,0.14),transparent_55%)]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-y-0 right-0 w-1/2 max-w-xl bg-[radial-gradient(circle_at_70%_40%,rgba(56,189,248,0.06),transparent_65%)]"
-        aria-hidden
-      />
+    <main className="min-h-screen bg-slate-950 text-white">
+      {/* Hero */}
+      <section className="relative overflow-hidden border-b border-slate-800/80">
+        <div
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_85%_55%_at_50%_-15%,rgba(34,211,238,0.12),transparent_55%)]"
+          aria-hidden
+        />
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 w-1/2 max-w-xl bg-[radial-gradient(circle_at_70%_40%,rgba(59,130,246,0.08),transparent_65%)]"
+          aria-hidden
+        />
 
-      <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-20">
-        <Link
-          href="/"
-          className="inline-flex text-sm font-medium text-cyan-400 transition-colors hover:text-cyan-300"
-        >
-          ← Back Home
-        </Link>
+        <div className="relative mx-auto max-w-6xl px-4 pb-14 pt-10 sm:px-6 sm:pb-16 sm:pt-12 lg:px-8 lg:pt-16">
+          <Link
+            href="/"
+            className="inline-flex text-sm font-medium text-cyan-400 transition-colors hover:text-cyan-300"
+          >
+            ← Back to home
+          </Link>
 
-        <header className="mt-8 max-w-3xl">
-          <p className="inline-flex w-fit items-center rounded-full border border-cyan-500/25 bg-cyan-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300 sm:text-sm">
-            What we offer
-          </p>
-          <h1 className="mt-6 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            Services{" "}
-            <span className="bg-gradient-to-r from-cyan-300 to-cyan-500 bg-clip-text text-transparent">
-              built for uptime
-            </span>
-          </h1>
-          <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-300 sm:text-lg">
-            Practical cloud data capabilities — backup, recovery, storage,
-            migration, visibility, and monitoring — aligned to how real teams
-            run operations.
-          </p>
-        </header>
+          <header className="mt-10 max-w-3xl lg:mt-12">
+            <p className="inline-flex w-fit items-center rounded-full border border-cyan-500/25 bg-cyan-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300 sm:text-sm">
+              Services
+            </p>
+            <h1 className="mt-6 text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+              From data foundations to{" "}
+              <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-400 bg-clip-text text-transparent">
+                decisions at scale
+              </span>
+            </h1>
+            <p className="mt-5 max-w-2xl text-pretty text-base leading-relaxed text-slate-300 sm:text-lg">
+              Cloud Data RX is a Data, AI, and Business Intelligence company. We
+              deliver outcomes across analytics, automation, BI, cloud platforms,
+              engineering, and Snowflake—plus optional lead intelligence when
+              targeting workflows need tighter signal.
+            </p>
+          </header>
+        </div>
+      </section>
 
-        <ul className="mt-12 grid list-none gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-8">
-          {services.map(({ title, description }) => (
-            <li key={title}>
-              <article className="flex h-full flex-col rounded-2xl border border-slate-800 bg-slate-900/70 p-6 shadow-xl backdrop-blur-sm transition-colors hover:border-slate-700 sm:p-7">
-                <div className="flex items-start gap-3">
-                  <span
-                    className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.65)]"
-                    aria-hidden
-                  />
-                  <div className="min-w-0 flex-1">
-                    <h2 className="text-lg font-bold text-white sm:text-xl">
-                      {title}
-                    </h2>
-                    <p className="mt-3 text-sm leading-relaxed text-slate-400 sm:text-base">
-                      {description}
+      {/* Service cards */}
+      <section
+        className="px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-20"
+        aria-labelledby="services-grid-heading"
+      >
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <h2
+              id="services-grid-heading"
+              className="text-xl font-bold tracking-tight text-white sm:text-2xl"
+            >
+              What we deliver
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-slate-400 sm:text-base">
+              Each engagement is scoped to your stack and goals—focused sprints or
+              longer programs—with clear milestones and pragmatic delivery.
+            </p>
+          </div>
+
+          <ul className="mt-12 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+            {services.map((item) => {
+              const badge = "badge" in item ? item.badge : undefined;
+              return (
+                <li key={item.title}>
+                  <article className="flex h-full flex-col rounded-2xl border border-slate-200 bg-white p-6 text-slate-900 shadow-lg shadow-black/10 transition-colors hover:border-cyan-300/70 hover:shadow-xl sm:p-7">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="text-lg font-bold sm:text-xl">
+                        {item.title}
+                      </h3>
+                      {badge ? (
+                        <span className="rounded-full border border-cyan-200 bg-cyan-50 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-cyan-800">
+                          {badge}
+                        </span>
+                      ) : null}
+                    </div>
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-slate-600 sm:text-base">
+                      {item.description}
                     </p>
-                  </div>
-                </div>
-              </article>
-            </li>
-          ))}
-        </ul>
+                    <span
+                      className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-cyan-200 to-transparent opacity-70"
+                      aria-hidden
+                    />
+                  </article>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </section>
 
-        <div className="mt-14 flex flex-col gap-4 border-t border-slate-800 pt-10 sm:flex-row sm:items-center sm:justify-between lg:mt-16">
-          <p className="text-sm text-slate-400">
-            Not sure which services fit your stack? We&apos;ll help you prioritize.
-          </p>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Link
-              href="/about"
-              className="inline-flex items-center justify-center rounded-xl border border-slate-600 px-5 py-3 text-sm font-semibold text-white transition-colors hover:border-slate-500 hover:bg-slate-900/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-            >
-              About Us
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center rounded-xl bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/15 transition-colors hover:bg-cyan-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-            >
-              Contact Us
-            </Link>
+      {/* CTA */}
+      <section className="border-t border-slate-800 bg-slate-50 px-4 py-14 sm:px-6 sm:py-16 lg:px-8">
+        <div className="mx-auto max-w-6xl">
+          <div className="rounded-3xl border border-slate-200 bg-white px-6 py-10 text-center shadow-sm sm:px-10 sm:py-12">
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+              Want a practical roadmap—not a vague “data strategy” deck?
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
+              Tell us what you are aiming to measure, automate, or modernize next.
+              We will help you sequence the work so early wins compound into a
+              stronger analytics and intelligence foundation.
+            </p>
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <Link
+                href="/contact"
+                className="inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-6 py-3.5 text-base font-semibold text-white shadow-md shadow-blue-600/25 transition-colors hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:w-auto"
+              >
+                Start a conversation
+              </Link>
+              <Link
+                href="/about"
+                className="inline-flex w-full items-center justify-center rounded-xl border border-slate-300 bg-white px-6 py-3.5 text-base font-semibold text-slate-900 transition-colors hover:border-slate-400 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white sm:w-auto"
+              >
+                Read about us
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 }
