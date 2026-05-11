@@ -131,4 +131,6 @@ Ideas you can add as you learn more:
 ### Contact Page
 ![Contact](./public/screenshots/contact.png)
 
-
+- Added Next.js API route for contact form submission
+- Contact form sends data to /api/contact using POST request
+- API validates form fields and returns success/error response

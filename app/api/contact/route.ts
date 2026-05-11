@@ -1,15 +1,19 @@
 import { NextResponse } from "next/server";
 
 type ContactBody = {
-  fullName?: unknown;
-  companyName?: unknown;
-  email?: unknown;
-  service?: unknown;
-  message?: unknown;
+  fullName?: string;
+  companyName?: string;
+  email?: string;
+  service?: string;
+  message?: string;
 };
 
-function isNonEmptyString(value: unknown): value is string {
-  return typeof value === "string" && value.trim().length > 0;
+function pickString(value: unknown): string {
+  return typeof value === "string" ? value : "";
+}
+
+function isNonEmptyString(value: string): boolean {
+  return value.trim().length > 0;
 }
 
 export async function POST(request: Request) {
@@ -23,11 +27,11 @@ export async function POST(request: Request) {
     );
   }
 
-  const fullName = body.fullName;
-  const companyName = body.companyName;
-  const email = body.email;
-  const service = body.service;
-  const message = body.message;
+  const fullName = pickString(body.fullName);
+  const companyName = pickString(body.companyName);
+  const email = pickString(body.email);
+  const service = pickString(body.service);
+  const message = pickString(body.message);
 
   const missing: string[] = [];
   if (!isNonEmptyString(fullName)) missing.push("fullName");
