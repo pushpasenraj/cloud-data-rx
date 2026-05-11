@@ -26,6 +26,7 @@ export default function ContactPage() {
   const [serviceInterest, setServiceInterest] = useState("");
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const [errors, setErrors] = useState<{
     fullName?: string;
@@ -37,6 +38,7 @@ export default function ContactPage() {
 
   function dismissSuccess() {
     setSuccess(false);
+    setSubmitError(null);
   }
 
   function validate() {
@@ -70,26 +72,53 @@ export default function ContactPage() {
     return Object.keys(nextErrors).length === 0;
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
     setSuccess(false);
+    setSubmitError(null);
 
     if (!validate()) {
       return;
     }
 
-    window.alert(
-      `Thanks, ${fullName.trim()} — we received your message. We'll follow up soon. (Demo: no backend is connected yet.)`,
-    );
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: fullName.trim(),
+          companyName: companyName.trim(),
+          email: businessEmail.trim(),
+          service: serviceInterest,
+          message: message.trim(),
+        }),
+      });
 
-    setFullName("");
-    setCompanyName("");
-    setBusinessEmail("");
-    setServiceInterest("");
-    setMessage("");
-    setErrors({});
-    setSuccess(true);
+      const data = (await response.json().catch(() => ({}))) as {
+        error?: string;
+        missing?: string[];
+      };
+
+      if (!response.ok) {
+        const detail =
+          Array.isArray(data.missing) && data.missing.length > 0
+            ? `Missing: ${data.missing.join(", ")}`
+            : data.error ?? "Something went wrong. Please try again.";
+        setSubmitError(detail);
+        return;
+      }
+
+      setFullName("");
+      setCompanyName("");
+      setBusinessEmail("");
+      setServiceInterest("");
+      setMessage("");
+      setErrors({});
+      setSuccess(true);
+    } catch {
+      setSubmitError("Network error. Please try again.");
+    }
   }
 
   const inputBase =
@@ -204,6 +233,12 @@ export default function ContactPage() {
               </div>
             ) : null}
 
+            {submitError ? (
+              <p className="mb-6 text-sm text-red-400 sm:text-base" role="alert">
+                {submitError}
+              </p>
+            ) : null}
+
             <form className="flex flex-col gap-6" onSubmit={handleSubmit} noValidate>
               <div className="grid gap-6 sm:grid-cols-2">
                 <div className="flex flex-col gap-2">
@@ -218,10 +253,11 @@ export default function ContactPage() {
                     name="fullName"
                     type="text"
                     autoComplete="name"
-                    placeholder="Taylor Morgan"
+                    placeholder=""
                     value={fullName}
                     onChange={(e) => {
                       if (success) setSuccess(false);
+                      setSubmitError(null);
                       setFullName(e.target.value);
                     }}
                     aria-invalid={errors.fullName ? true : undefined}
@@ -253,10 +289,11 @@ export default function ContactPage() {
                     name="companyName"
                     type="text"
                     autoComplete="organization"
-                    placeholder="Acme Analytics LLC"
+                    placeholder=""
                     value={companyName}
                     onChange={(e) => {
                       if (success) setSuccess(false);
+                      setSubmitError(null);
                       setCompanyName(e.target.value);
                     }}
                     aria-invalid={errors.companyName ? true : undefined}
@@ -289,10 +326,11 @@ export default function ContactPage() {
                   name="businessEmail"
                   type="email"
                   autoComplete="email"
-                  placeholder="you@company.com"
+                  placeholder=""
                   value={businessEmail}
                   onChange={(e) => {
                     if (success) setSuccess(false);
+                    setSubmitError(null);
                     setBusinessEmail(e.target.value);
                   }}
                   aria-invalid={errors.businessEmail ? true : undefined}
@@ -325,6 +363,7 @@ export default function ContactPage() {
                   value={serviceInterest}
                   onChange={(e) => {
                     if (success) setSuccess(false);
+                    setSubmitError(null);
                     setServiceInterest(e.target.value);
                   }}
                   aria-invalid={errors.serviceInterest ? true : undefined}
@@ -369,10 +408,11 @@ export default function ContactPage() {
                   id="contact-message"
                   name="message"
                   rows={5}
-                  placeholder="Share goals, timelines, tooling, stakeholders, constraints…"
+                  placeholder=""
                   value={message}
                   onChange={(e) => {
                     if (success) setSuccess(false);
+                    setSubmitError(null);
                     setMessage(e.target.value);
                   }}
                   aria-invalid={errors.message ? true : undefined}
