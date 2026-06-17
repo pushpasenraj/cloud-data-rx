@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
 
+import { insertContactSubmission } from "@/lib/db";
+
+export const runtime = "nodejs";
+
 type ContactBody = {
   fullName?: string;
   companyName?: string;
@@ -55,7 +59,18 @@ export async function POST(request: Request) {
     message: message.trim(),
   };
 
-  console.log("[contact]", payload);
+  try {
+    await insertContactSubmission(payload);
+  } catch (err) {
+    console.error("[contact] database error", err);
+    return NextResponse.json(
+      {
+        error: "Could not save your message. Please try again later.",
+        missing: [] as string[],
+      },
+      { status: 500 },
+    );
+  }
 
   return NextResponse.json({
     success: true,

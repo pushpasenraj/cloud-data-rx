@@ -1,0 +1,14 @@
+CREATE DATABASE CloudDataRX
+
+USE CloudDataRX;
+
+CREATE TABLE ContactSubmissions (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    FullName NVARCHAR(100) NOT NULL,
+    CompanyName NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(150) NOT NULL,
+    Service NVARCHAR(100) NOT NULL,
+    Message NVARCHAR(MAX) NOT NULL,
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
+
